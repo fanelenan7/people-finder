@@ -1,0 +1,27 @@
+.search-again {
+  display: block;
+  margin: 30px auto;
+  width: 40vw;
+  border: none;
+  font-size: 1.5em;
+  font-weight: 300;
+  text-decoration: none;
+  box-shadow: 0 5px #8E2D37;
+  border-radius: 9px;
+  background: #00B17F;
+  padding: 12px 50px;
+  color: #fff;
+}
+
+img {
+  max-width: 40vw;
+  max-height: 30vh;
+}
+
+.results-container {
+  font-size: 1.5em;
+}
+
+span {
+  color: #00B17F;
+}
