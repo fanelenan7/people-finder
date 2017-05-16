@@ -9,6 +9,8 @@ class Result extends Component {
 
   render() {
     let result = this.props.searchResult
+    
+    {/* Mapping all the social profiles, creating a list of only website names and urls */}
     let mappedProfiles = result.socialProfiles.map((profile, index) => {
       let url = profile.url
       let socialMedia = profile.typeName
