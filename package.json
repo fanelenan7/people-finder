@@ -1,5 +1,6 @@
 {
   "name": "people-finder",
+  "homepage": "https://fanelenan7.github.io/people-finder",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

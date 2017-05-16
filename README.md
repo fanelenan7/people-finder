@@ -4,6 +4,7 @@ People searching app. Put in the email of someone you know and you may stalk the
 ## How does it work?
 
 It's a React app that makes a call to FullContact API via Axios. You may find the API here: https://www.fullcontact.com/developer/docs/
+You may find a deployed version here: https://fanelenan7.github.io/people-finder
 
 ## Why?
 
@@ -11,4 +12,4 @@ Created as a code challenge for Automata Studios. I had tons of fun making this,
 
 ## Did you have to spend so much time on styling???
 
-*Yes.*
+_Yes._ Yes I did.
