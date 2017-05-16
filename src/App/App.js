@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import $ from 'jquery'
+import jsonp from 'jsonp'
 import {
   BrowserRouter as Router,
   Route,
@@ -8,7 +10,7 @@ import {
 } from 'react-router-dom'
 
 import Search from '../Search/Search'
-import Results from '../Results/Results'
+import Result from '../Result/Result'
 import './App.css'
 
 class App extends Component {
@@ -29,30 +31,25 @@ class App extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    axios.defaults.headers.common['X-FullContact-APIKey'] = "2a5de7a16697e442"
-    axios.get(`https://api.fullcontact.com/v2/person.json?email=${this.state.searchQuery}`)
+    let searchQuery = this.state.searchQuery
+    let url = `https://api.fullcontact.com/v2/person.json?email=${searchQuery}`
+    axios.defaults.headers.common['X-FullContact-APIKey'] = '2a5de7a16697e442'
+    axios.get(url)
       .then((response) => {
         this.setState({
-          searchResult: response,
+          searchResult: response.data,
           hasSearched: true
         })
       }).catch((err) => {
-        alert(err)
+        alert(`Something went wrong!
+          ${err}`)
         console.log(err)
       })
   }
 
-  printResult() {
-    return (
-      <Results
-        searchResult={this.state.searchResult}
-        clearSearch={() => this.clearSearch()}
-      />
-    )
-  }
-
   clearSearch() {
     this.setState({
+      searchQuery: null,
       hasSearched: false
     })
   }
@@ -62,15 +59,15 @@ class App extends Component {
       <Router>
         <div>
           <nav>
-            <Link to="/people-finder">People Finder</Link>
-            <a href="https://github.com/fanelenan7/people-finder">github</a>
+            <Link to="/people-finder" className="nav-button">People Finder</Link>
+            <a href="https://github.com/fanelenan7/people-finder" className="nav-button">github</a>
           </nav>
           <main>
             <Route
               path="/people-finder"
               render={() => {
                 if(this.state.hasSearched) {
-                  return <Redirect to="/results" />
+                  return <Redirect to="/result" />
                 }
                 return <Search
                   searchQuery={this.state.searchQuery}
@@ -80,8 +77,15 @@ class App extends Component {
               }}
             />
             <Route
-              path="results"
-              render={() => this.printResult()}
+              path="/result"
+              render={() => {
+                return (
+                  <Result
+                    searchResult={this.state.searchResult}
+                    clearSearch={() => this.clearSearch()}
+                  />
+                )
+              }}
             />
             <Route
               path="/*"

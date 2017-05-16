@@ -5,6 +5,9 @@ nav {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.nav-button {
   padding: 30px;
   margin: 0 3px;
   display: inline-block;
@@ -16,5 +19,4 @@ a {
 a:hover {
   background: #18CE8F;
   transition: background-color 0.5s ease-out;
-
 }

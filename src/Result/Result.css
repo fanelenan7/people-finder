@@ -5,6 +5,7 @@
   border: none;
   font-size: 1.5em;
   font-weight: 300;
+  text-align: center;
   text-decoration: none;
   box-shadow: 0 5px #8E2D37;
   border-radius: 9px;
@@ -13,15 +14,26 @@
   color: #fff;
 }
 
+.results-header {
+  margin: 5vh;
+}
+
 img {
   max-width: 40vw;
   max-height: 30vh;
+  border: 5px #fff solid;
+  padding: 15px;
+  margin-bottom: 15px;
 }
 
 .results-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-size: 1.5em;
 }
 
 span {
-  color: #00B17F;
+  color: #18CE8F;
+  text-align: center;
 }
