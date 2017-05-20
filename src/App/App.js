@@ -17,17 +17,16 @@ class App extends Component {
     this.state = {
       searchQuery: null,
       searchResult: null,
-      {/* React Router flag */}
       hasSearched: false
     }
   }
-  {/* Change search query value based on input */}
+  
   handleInput(e) {
     this.setState({
       searchQuery: e.target.value
     })
   }
-  {/* Form submition listener */}
+  
   handleSubmit(e) {
     e.preventDefault()
     let searchQuery = this.state.searchQuery
@@ -45,7 +44,7 @@ class App extends Component {
         console.log(err)
       })
   }
-  {/* Form reset */}
+
   clearSearch() {
     this.setState({
       searchQuery: null,
