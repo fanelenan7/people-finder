@@ -1,6 +1,8 @@
 ## What is this?
 People searching app. Put in the email of someone you know and you may stalk them at your leisure. You will be provided with a full name, photo, general location and links to all the social media profiles that they registered with that particular email with.
 
+You can find a deployed version of the app here: http://people-finder.surge.sh/people-finder
+
 ## How does it work?
 
 It's a React app that makes a call to FullContact API via Axios. You may find the API here: https://www.fullcontact.com/developer/docs/
