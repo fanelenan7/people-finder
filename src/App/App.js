@@ -1,48 +1,59 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, { Component } from 'react';
+import fetch from 'node-fetch';
+import {} from 'dotenv/config';
 import {
   BrowserRouter as Router,
   Route,
   Redirect,
   Link
-} from 'react-router-dom'
+} from 'react-router-dom';
 
-import Search from '../Search/Search'
-import Result from '../Result/Result'
-import './App.css'
+import Search from '../Search/Search';
+import Result from '../Result/Result';
+import './App.css';
 
 class App extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       searchQuery: null,
       searchResult: null,
       hasSearched: false
-    }
+    };
   }
-  
+
   handleInput(e) {
     this.setState({
       searchQuery: e.target.value
-    })
+    });
   }
-  
+
   handleSubmit(e) {
-    e.preventDefault()
-    let searchQuery = this.state.searchQuery
-    let url = `https://api.fullcontact.com/v2/person.json?email=${searchQuery}`
-    axios.defaults.headers.common['X-FullContact-APIKey'] = '2a5de7a16697e442'
-    axios.get(url)
-      .then((response) => {
-        this.setState({
-          searchResult: response.data,
-          hasSearched: true
-        })
-      }).catch((err) => {
-        alert(`Something went wrong!
-          ${err}`)
-        console.log(err)
+    e.preventDefault();
+    const searchQuery = this.state.searchQuery;
+    fetch('https://api.fullcontact.com/v3/person.enrich',{
+      method: 'POST',
+      headers: {
+        "Authorization": "Bearer NGiVIAjMMLcVkvohdgmCFPCQXUtqn1UZ"
+      },
+      body: JSON.stringify({
+        'email': searchQuery,
       })
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((response) => {
+      this.setState({
+        searchResult: response,
+        hasSearched: true
+      })
+    })
+    .catch((err) => {
+      alert(`Something went wrong!
+        ${err}`)
+      console.log(err)
+    })
   }
 
   clearSearch() {
@@ -95,7 +106,7 @@ class App extends Component {
         </div>
       </Router>
     );
-  }
-}
+  };
+};
 
-export default App
+export default App;
