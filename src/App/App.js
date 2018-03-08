@@ -88,6 +88,9 @@ class App extends Component {
             <Route
               path="/result"
               render={() => {
+                if (!this.state.searchQuery && !this.state.searchResult) {
+                  return <Redirect to="/people-finder" />
+                }
                 return (
                   <Result
                     searchResult={this.state.searchResult}
