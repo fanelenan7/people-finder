@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import fetch from 'node-fetch';
-import {} from 'dotenv/config';
 import {
   BrowserRouter as Router,
   Route,
@@ -33,8 +32,12 @@ class App extends Component {
     const searchQuery = this.state.searchQuery;
     fetch('https://api.fullcontact.com/v3/person.enrich',{
       method: 'POST',
+      // normally this should be hidden, but this is a free API key and a very
+      // capricious API key at that. I tried to use env variable with string
+      // concatenation and template literals but that messses up the auth for
+      // some reason
       headers: {
-        "Authorization": "Bearer NGiVIAjMMLcVkvohdgmCFPCQXUtqn1UZ"
+        'Authorization': 'Bearer NGiVIAjMMLcVkvohdgmCFPCQXUtqn1UZ'
       },
       body: JSON.stringify({
         'email': searchQuery,
